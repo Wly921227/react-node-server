@@ -1,0 +1,22 @@
+{
+  "name": "react-node-server",
+  "version": "1.0.0",
+  "description": "render react in server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moyu",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Wly921227/react-node-server.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
