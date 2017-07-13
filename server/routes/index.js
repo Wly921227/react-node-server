@@ -1,10 +1,16 @@
 import express from 'express'
+import React from 'react'
+import {renderToString} from 'react-dom/server'
+import Demo from '../../client/pages/demo'
 
 const router = express.Router()
 
 router.get('/', function (req, res) {
-    res.render('index', {
-        root: 'Express Server'
+
+    const html = renderToString(<Demo/>)
+
+    res.render('index.ejs', {
+        root: html
     })
 })
 
