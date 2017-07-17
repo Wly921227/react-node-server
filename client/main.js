@@ -2,9 +2,9 @@ require('common/style.less')
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Demo from 'pages/demo'
+import Route from './router'
 
 ReactDOM.render(
-    <Demo/>,
+    <Route/>,
     document.getElementById('main')
 )
