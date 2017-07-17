@@ -44,7 +44,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loaders: [
                     'style',
-                    'css?modules&camelCase&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:8]',
+                    'css',
                     'less'
                 ]
             },

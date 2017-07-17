@@ -10,17 +10,14 @@ require('babel-register')({
     plugins: ['add-module-exports']
 })
 
+
 // Css require hook
-// require('css-modules-require-hook')({
-//     extensions: ['.scss'],
-//     preprocessCss: (data, filename) =>
-//         require('node-less').renderSync({
-//             data,
-//             file: filename
-//         }).css,
-//     camelCase: true,
-//     generateScopedName: '[name]__[local]__[hash:base64:8]'
-// })
+const lessParser = require('postcss-less').parse
+require('css-modules-require-hook')({
+    extensions: ['.less'],
+    processorOpts: {parser: lessParser},
+    generateScopedName: '[name]__[local]__[hash:base64:8]'
+})
 
 const fs = require('fs')
 const path = require('path')

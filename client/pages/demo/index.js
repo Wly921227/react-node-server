@@ -1,3 +1,4 @@
+import './style.less'
 import React, {Component} from 'react'
 
 class Demo extends Component {
