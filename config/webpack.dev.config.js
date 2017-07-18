@@ -7,9 +7,16 @@ module.exports = {
     context: path.resolve(__dirname, '../'),
     devtool: 'eval-source-map',
     entry: {
-        vendor: ['react', 'react-dom', 'react-router'],
+        vendor: [
+            'react',
+            'react-dom',
+            'react-router',
+            'redux',
+            'react-redux',
+            'lodash'
+        ],
         main: [
-            './client/main',
+            './client',
             'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000'
         ]
     },
@@ -39,7 +46,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loaders: [
                     'style',
-                    'css',
+                    'css?modules&camelCase&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:8]',
                     'less'
                 ]
             },
@@ -53,7 +60,7 @@ module.exports = {
             },
             {
                 test: /\.(jpg|png|gif|webp)$/,
-                loader: 'url?limit=1000'
+                loader: 'url?limit=8192'
             },
             {
                 test: /\.(html|ejs)$/,
