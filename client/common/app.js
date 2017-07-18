@@ -1,11 +1,5 @@
-import React, {Component} from 'react'
-
-class App extends Component {
-    render() {
-        return <div className="app">
-            {this.props.children}
-        </div>
-    }
+if (process.env.NODE_ENV === 'production') {
+    module.exports = require('./state/app')
+} else {
+    module.exports = require('./state/app.dev')
 }
-
-module.exports = App

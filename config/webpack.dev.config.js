@@ -20,11 +20,6 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        alias: {
-            'common': './common',
-            'images': './images',
-            'pages': './pages'
-        },
         extensions: ['', '.js', '.json', '.less', '.css']
     },
     module: {

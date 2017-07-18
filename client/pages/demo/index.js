@@ -7,24 +7,19 @@ class Demo extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            name: 'Hallo World'
-        }
     }
 
     componentWillMount() {
         console.log('will mount')
-        this.state.name = this.state.name + '!!!'
-        this.setState(this.state)
     }
 
     componentDidMount() {
+        const {
+            DemoTodo
+        } = this.props.actions
         console.log('did mount')
-        this.state.name = this.state.name + '--> time: '
-        this.state.num = 0
         this.interval = setInterval(() => {
-            this.state.num++
-            this.setState(this.state)
+            DemoTodo.addNum()
         }, 1000)
     }
 
@@ -33,13 +28,19 @@ class Demo extends Component {
     }
 
     render() {
-        let {
-            name,
-            num
-        } = this.state || {}
+        const {
+            DemoState
+        } = this.props
+
+        const {
+            DemoTodo
+        } = this.props.actions
 
         return <div className="demo">
-            React Demo page, {name} {num ? num : ''}
+            <div>
+                <button onClick={() => DemoTodo.clearNum()}>清零</button>
+            </div>
+            React Demo page, {DemoState.name} --> time: {DemoState.num}
         </div>
     }
 

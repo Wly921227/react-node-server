@@ -10,17 +10,23 @@ require('babel-register')({
     plugins: ['add-module-exports']
 })
 
-
 // Css require hook
-// const lessParser = require('postcss-less').parse
-// require('css-modules-require-hook')({
-//     extensions: ['.less'],
-//     processorOpts: {parser: lessParser},
-//     generateScopedName: '[name]__[local]__[hash:base64:8]'
-// })
+const lessParser = require('postcss-less').parse
+require('css-modules-require-hook')({
+    extensions: ['.less'],
+    processorOpts: {parser: lessParser},
+    generateScopedName: '[name]__[local]__[hash:base64:8]'
+})
 // 忽略less文件，
-const Module = require('module')
-Module._extensions['.less'] = (module, fn) => ''
+// const Module = require('module')
+// Module._extensions['.less'] = (module, fn) => ''
+
+// Image require hook
+require('asset-require-hook')({
+    name: '/[hash].[ext]',
+    extensions: ['jpg', 'png', 'gif', 'webp'],
+    limit: 1000
+})
 
 const fs = require('fs')
 const path = require('path')
@@ -57,7 +63,6 @@ app.set('view engine', 'ejs')
 
 app.use(clientRoute)
 // server route
-// app.use('/', require('../server/routes/index'))
 app.use(devMiddleware(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath,

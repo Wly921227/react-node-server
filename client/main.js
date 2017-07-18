@@ -1,10 +1,17 @@
-require('common/style.less')
-
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Route from './router'
+import {Provider} from 'react-redux'
+import routes from './router/config'
+import {Router, match, browserHistory} from 'react-router'
+import configureStore from './common/state/store'
 
-ReactDOM.render(
-    <Route/>,
-    document.getElementById('main')
-)
+const store = configureStore(window.REDUX_STATE)
+
+match({history: browserHistory, routes}, (error, redirectLocation, renderProps) => {
+    ReactDOM.render(
+        <Provider store={store}>
+            <Router {...renderProps}/>
+        </Provider>,
+        document.getElementById('main')
+    )
+})
